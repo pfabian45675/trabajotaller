@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Editar Producto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button,
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        button:hover,
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .cancel-button {
+            background-color: #f44336;
+            margin-left: 10px;
+            text-decoration: none; /* Quita la línea del enlace */
+        }
+
+        .cancel-button:hover {
+            background-color: #e53935;
+            text-decoration: none; /* Asegura que no haya línea al hacer hover */
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Editar Producto</h1>
+        <form action="/productos/edit" method="post">
+            <input type="hidden" name="id" th:value="${producto.id}"/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" th:value="${producto.nombre}"/>
+            <br/>
+            <label for="precio">Precio:</label>
+            <input type="number" name="precio" id="precio" th:value="${producto.precio}" step="0.01"/>
+            <br/>
+            <button type="submit">Guardar Cambios</button>
+            <a href="/productos/view" class="button cancel-button">Cancelar</a>
+        </form>
+    </body>
+</html>

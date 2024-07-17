@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Agregar Venta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                color: #333333;
+            }
+
+            form {
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 100%;
+                max-width: 600px;
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                margin: 10px 0 5px;
+                color: #333333;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            input[type="date"],
+            select {
+                width: 95%;
+                padding: 10px;
+                border: 1px solid #dddddd;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+                text-align: center;
+                margin-top: 10px; /* Añadido para espacio entre botones */
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            .cancel-button {
+                background-color: #f44336;
+                margin-left: 10px;
+                text-decoration: none; /* Quita la línea del enlace */
+                display: inline-block;
+                padding: 10px 20px; /* Añadido para consistencia de tamaño */
+                border-radius: 5px; /* Añadido para consistencia de forma */
+                font-size: 16px; /* Añadido para consistencia de fuente */
+                transition: background-color 0.3s ease; /* Añadido para consistencia de transición */
+            }
+
+            .cancel-button:hover {
+                background-color: #e53935;
+                text-decoration: none; /* Asegura que no haya línea al hacer hover */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Agregar Nueva Venta</h1>
+        <form action="/ventas/add" method="post">
+            <label for="producto">Producto:</label>
+            <select id="producto" name="producto.id" required>
+                <option th:each="producto : ${productos}" th:value="${producto.id}" th:text="${producto.nombre}"></option>
+            </select>
+            <br>
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" name="cliente.id" required>
+                <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombre}"></option>
+            </select>
+            <br>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+            <br>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <br>
+            <label for="precioTotal">Precio Total:</label>
+            <input type="number" id="precioTotal" name="precioTotal" step="0.01" required>
+            <br>
+            <button type="submit">Agregar Venta</button>
+            <a href="/main" class="cancel-button">Cancelar</a>
+        </form>
+    </body>
+</html>
